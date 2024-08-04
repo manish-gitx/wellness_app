@@ -31,6 +31,7 @@ const Header = () => {
 
   function removeToken(){
     localStorage.removeItem('token');
+    localStorage.removeItem('loggedInUser');
     navigate("/")
 
   }

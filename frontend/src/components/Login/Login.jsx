@@ -37,11 +37,11 @@ function Login() {
                 body: JSON.stringify(loginInfo)
             });
             const result = await response.json();
-            const { success, message, jwtToken, name, error } = result;
+            const { success, message, jwtToken,error,email } = result;
             if (success) {
                 handleSuccess(message);
                 localStorage.setItem('token', jwtToken);
-                localStorage.setItem('loggedInUser', name);
+                localStorage.setItem('loggedInUser', email);
                 setTimeout(() => {
                     navigate('/home')
                 }, 1000)

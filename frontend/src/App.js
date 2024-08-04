@@ -8,7 +8,7 @@ import Login from "./components/Login/Login";
 import Journal from "./components/Journal/Journal";
 import Register from "./components/Login/Register";
 import RefreshHandler from "./RefreshHandler";
-
+import TextEditor from "./components/Document/TextEditor"
 function App() {
   useEffect(() => {
     Aos.init();
@@ -25,11 +25,14 @@ function App() {
       <div className="App">
         <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/home" element={<PrivateRoute element={<Landing />} />} />
-          <Route path="/journal" element={<PrivateRoute element={<Journal />} />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/signup" element={<Register />} />
+  <Route path="/home" element={<PrivateRoute element={<Landing />} />} />
+  <Route path="/journal" element={<PrivateRoute element={<Journal />} />} />
+  <Route path="/document/:id" element={<PrivateRoute element={<TextEditor />} />} />
+  <Route path="*" element={<div>404 Not Found</div>} />
+          
         </Routes>
       </div>
     </Router>
