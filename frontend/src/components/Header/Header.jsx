@@ -26,7 +26,14 @@ const nav__links = [
 
 const Header = () => {
 
+
   const navigate = useNavigate();
+
+  function removeToken(){
+    localStorage.removeItem('token');
+    navigate("/")
+
+  }
 
   const handleRegisterClick = () => {
     navigate('/journal');
@@ -97,6 +104,9 @@ const Header = () => {
 
             <button className="register__btn" onClick={()=>navigate("/chatBot")}>
               ChatBot
+            </button>
+            <button className="register__btn" onClick={removeToken}>
+              SignOut
             </button>
 
             <span className="mobile__menu">
