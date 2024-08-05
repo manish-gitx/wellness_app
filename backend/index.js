@@ -38,8 +38,18 @@ app.post('/newPage',async(req,res)=>{
     }
 catch (error) {
     res.status(505).json({ message: 'error occurred: ', error: error.message });
-}
-    
+}  
+})
+
+app.post('/delete',async(req,res)=>{
+    try{
+        const{_id}=req.body.data;
+        await document.findByIdAndDelete(_id);
+    res.send("sucess");
+    }
+catch (error) {
+    res.status(505).json({ message: 'error occurred: ', error: error.message });
+}  
 })
 const server = http.createServer(app);
 app.listen(PORT, () => {

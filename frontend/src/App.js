@@ -11,10 +11,22 @@ import RefreshHandler from "./RefreshHandler";
 import TextEditor from "./components/Document/TextEditor"
 function App() {
   useEffect(() => {
+    
     Aos.init();
   }, []);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    // Retrieve the authentication state from localStorage
+    const savedAuthState = localStorage.getItem('isAuthenticated');
+    return savedAuthState ? JSON.parse(savedAuthState) : false;
+  });
+
+  useEffect(() => {
+    // Save the authentication state to localStorage whenever it changes
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
 
   const PrivateRoute = ({ element }) => {
     return isAuthenticated ? element : <Navigate to="/login" />;
@@ -25,7 +37,7 @@ function App() {
       <div className="App">
         <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
         <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+  <Route path="/" element={<Navigate to="/login" />} />
   <Route path="/login" element={<Login />} />
   <Route path="/signup" element={<Register />} />
   <Route path="/home" element={<PrivateRoute element={<Landing />} />} />

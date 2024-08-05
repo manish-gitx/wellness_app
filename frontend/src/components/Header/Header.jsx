@@ -57,10 +57,12 @@ const Header = () => {
   };
 
   await fetchData();
-    navigate(`/document/${id}`)
+
+    window.open(`/document/${id}`, '_blank');
   }
 
   const handleRegisterClick = () => {
+    
     navigate('/journal');
   };
 

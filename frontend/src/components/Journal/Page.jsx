@@ -1,25 +1,25 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
+const Page = ({ heading, date, id, onDelete }) => {
+  const navigate = useNavigate();
 
-const Page = ({ heading, date,id}) => {
-  const navigate=useNavigate();
-  const formattedDate = new Date(date).toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>{heading}</h2>
       <p style={styles.date}>{formattedDate}</p>
-      <button onClick={() => navigate(`/document/${id}`)}>open</button>
+      <button onClick={() => navigate(`/document/${id}`)}>Open</button>
+      <button onClick={() => onDelete(id)} style={{ margin: '8px' }}>Delete</button>
     </div>
   );
 };
 
-// Inline styling for the component
 const styles = {
   container: {
     border: '1px solid #ddd',
