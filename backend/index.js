@@ -22,7 +22,6 @@ app.use('/auth', AuthRouter);
 app.post('/data', async (req, res) => {
     try {
         const { email } = req.body.data;
-        console.log(email);
         const data = await document.find({ email: email });
         
         res.json({ data });
@@ -30,6 +29,18 @@ app.post('/data', async (req, res) => {
         res.status(505).json({ message: 'error occurred: ', error: error.message });
     }
 });
+app.post('/newPage',async(req,res)=>{
+    try{
+        const{email,_id,date,data}=req.body.data;
+        console.log(req.body.data);
+    await document.create({ _id: _id, data: data, date: date, email: email });
+    res.send("sucess");
+    }
+catch (error) {
+    res.status(505).json({ message: 'error occurred: ', error: error.message });
+}
+    
+})
 const server = http.createServer(app);
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)

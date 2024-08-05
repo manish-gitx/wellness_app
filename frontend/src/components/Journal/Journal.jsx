@@ -5,7 +5,6 @@ import Page from "./Page";
 const Journal = () => {
     const [data, setData] = useState([]);
     const email = localStorage.getItem('loggedInUser');
-    console.log(typeof(email))
 
     useEffect(() => {
         const fetchData = async () => {

@@ -30,8 +30,8 @@ function App() {
   <Route path="/signup" element={<Register />} />
   <Route path="/home" element={<PrivateRoute element={<Landing />} />} />
   <Route path="/journal" element={<PrivateRoute element={<Journal />} />} />
-  <Route path="/document/:id" element={<PrivateRoute element={<TextEditor />} />} />
-  <Route path="*" element={<div>404 Not Found</div>} />
+  <Route path="/document/:id" element={<TextEditor />}/>
+
           
         </Routes>
       </div>

@@ -3,6 +3,10 @@ import "../../styles/header.css";
 import logo from "../../assets/img/dumble.png";
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidV4 } from "uuid"
+import axios from "axios";
+
+
 
 const nav__links = [
   {
@@ -34,6 +38,26 @@ const Header = () => {
     localStorage.removeItem('loggedInUser');
     navigate("/")
 
+  }
+
+  async function newPage(){
+    const id=uuidV4();
+    const date=new Date();
+    const data="";
+    const email = localStorage.getItem('loggedInUser');
+    const fetchData = async () => {
+      try {
+          const response = await axios.post('http://localhost:8080/newPage', {
+              data: { email: email,_id:id,data:data,date:date }
+          });
+          console.log(response);
+      } catch (error) {
+          console.error("Error fetching data:", error);
+      }
+  };
+
+  await fetchData();
+    navigate(`/document/${id}`)
   }
 
   const handleRegisterClick = () => {
@@ -103,11 +127,15 @@ const Header = () => {
               Journal
             </button>
 
-            <button className="register__btn" onClick={()=>navigate("/chatBot")}>
+            <button className="register__btn" onClick={() => window.open('https://mentalhealth-s7m0.onrender.com/', '_blank')}>
               ChatBot
             </button>
             <button className="register__btn" onClick={removeToken}>
               SignOut
+            </button>
+
+            <button className="register__btn" onClick={newPage}>
+              New Journal
             </button>
 
             <span className="mobile__menu">
