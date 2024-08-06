@@ -7,6 +7,7 @@ const socketIo = require('socket.io');
 const Document = require('./Models/Document');
 const socketHandler = require('./Controllers/socket');
 const { getData, createNewPage, deletePage } = require('./Controllers/journalPage');
+const valid=require('./Controllers/Auth')
 
 const AuthRouter = require('./Routes/AuthRouter');
 require('dotenv').config();
@@ -25,6 +26,7 @@ app.get('/ping', (req, res) => {
 app.post('/data',getData );
 app.post('/newPage',createNewPage);
 app.post('/delete',deletePage);
+app.post('/auth/valid',valid);
 
 const server = http.createServer(app);
 const io = socketIo(server, {
