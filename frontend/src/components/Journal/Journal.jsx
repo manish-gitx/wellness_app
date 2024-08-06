@@ -9,7 +9,7 @@ const Journal = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/data', {
+            const response = await axios.post('https://wellness-app-5f6y.onrender.com/data', {
                 data: { email: email }
             });
             setData(response.data.data);

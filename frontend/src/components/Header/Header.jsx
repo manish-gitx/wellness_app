@@ -47,7 +47,7 @@ const Header = () => {
     const email = localStorage.getItem('loggedInUser');
     const fetchData = async () => {
       try {
-          const response = await axios.post('http://localhost:8080/newPage', {
+          const response = await axios.post('https://wellness-app-5f6y.onrender.com/newPage', {
               data: { email: email,_id:id,data:data,date:date }
           });
       } catch (error) {
