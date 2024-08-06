@@ -25,7 +25,7 @@ const Journal = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.post('http://localhost:8080/delete', {
+            await axios.post('https://wellness-app-5f6y.onrender.com/delete', {
                 data: { _id: id }
             });
             setData(prevData => prevData.filter(item => item._id !== id));
