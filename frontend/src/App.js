@@ -19,12 +19,15 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     // Retrieve the authentication state from localStorage
+    console.log("im here i ran")
     const savedAuthState = localStorage.getItem('isAuthenticated');
     return savedAuthState ? JSON.parse(savedAuthState) : false;
   });
 
   useEffect(() => {
     // Save the authentication state to localStorage whenever it changes
+    console.log("im here")
+
     localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
   }, [isAuthenticated]);
 

@@ -6,9 +6,6 @@ const Journal = () => {
     const [data, setData] = useState([]);
     const email = localStorage.getItem('loggedInUser');
 
-    useEffect(() => {
-        fetchData();
-    }, [email]);
 
     const fetchData = async () => {
         try {
@@ -20,6 +17,11 @@ const Journal = () => {
             console.error("Error fetching data:", error);
         }
     };
+
+    useEffect(() => {
+        fetchData();
+    }, [email]);
+
 
     const handleDelete = async (id) => {
         try {
