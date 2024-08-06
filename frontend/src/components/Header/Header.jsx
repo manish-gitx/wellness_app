@@ -50,7 +50,6 @@ const Header = () => {
           const response = await axios.post('http://localhost:8080/newPage', {
               data: { email: email,_id:id,data:data,date:date }
           });
-          console.log(response);
       } catch (error) {
           console.error("Error fetching data:", error);
       }
