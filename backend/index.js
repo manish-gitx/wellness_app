@@ -31,7 +31,7 @@ app.post('/auth/valid',valid);
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://wellness-app-5f6y.onrender.com/",
+        origin: "*",
         methods: ["GET", "POST"],
     },
 });
