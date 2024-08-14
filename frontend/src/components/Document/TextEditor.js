@@ -26,7 +26,7 @@ export default function TextEditor() {
   const [quill, setQuill] = useState()
 
   useEffect(() => {
-    const s = io("https://wellness-app-5f6y.onrender.com/")
+    const s = io("wellnessapp-production.up.railway.app/")
     setSocket(s)
 
     return () => {
