@@ -9,7 +9,7 @@ const Journal = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.post('wellnessapp-production.up.railway.app/data', {
+            const response = await axios.post('https://wellnessapp-production.up.railway.app/data', {
                 data: { email: email }
             });
             setData(response.data.data);
@@ -25,7 +25,7 @@ const Journal = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.post('wellnessapp-production.up.railway.app/delete', {
+            await axios.post('https://wellnessapp-production.up.railway.app/delete', {
                 data: { _id: id }
             });
             setData(prevData => prevData.filter(item => item._id !== id));

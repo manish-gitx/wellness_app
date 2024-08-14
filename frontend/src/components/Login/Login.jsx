@@ -27,7 +27,7 @@ function Login() {
             return handleError('email and password are required')
         }
         try {
-            const url = `wellnessapp-production.up.railway.app/auth/login`;
+            const url = `https://wellnessapp-production.up.railway.app/auth/login`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {

@@ -8,7 +8,7 @@ function RefreshHandler({ setIsAuthenticated }) {
 
   const verifyToken = async (token) => {
     try {
-      const response = await axios.post('wellnessapp-production.up.railway.app/auth/valid', { token }, {
+      const response = await axios.post('https://wellnessapp-production.up.railway.app/auth/valid', { token }, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

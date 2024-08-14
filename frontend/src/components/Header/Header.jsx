@@ -47,7 +47,7 @@ const Header = () => {
     const email = localStorage.getItem('loggedInUser');
     const fetchData = async () => {
       try {
-          const response = await axios.post('wellnessapp-production.up.railway.app/newPage', {
+          const response = await axios.post('https://wellnessapp-production.up.railway.app/newPage', {
               data: { email: email,_id:id,data:data,date:date }
           });
       } catch (error) {
