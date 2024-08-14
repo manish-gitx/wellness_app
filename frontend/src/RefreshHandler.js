@@ -47,7 +47,7 @@ function RefreshHandler({ setIsAuthenticated }) {
     
         navigate('/login', { replace: true });
     }
-  }, [location, navigate, setIsAuthenticated]);
+  }, []);
 
   return null;
 }
